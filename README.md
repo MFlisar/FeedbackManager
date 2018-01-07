@@ -45,7 +45,13 @@ int notificationIcon = ...;
 
 // Variation 1:
 // Show a notification, it can be clicked and then the user can select how he wants to send the feedback mail
-builder.startNotification(context, "Title of the email chooser dialog", "Notification Title", "Notification Text", notificationIcon, notificationChannel, notificationId);
+builder.startNotification(context, 
+	"Title of the email chooser dialog", 
+	"Notification Title", 
+	"Notification Text", 
+	notificationIcon, 
+	notificationChannel, 
+	notificationId);
 
 // Variation 2:
 // Directly start the email chooser
