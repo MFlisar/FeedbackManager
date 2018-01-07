@@ -1,5 +1,4 @@
-### FeedbackManager [![Release](https://jitpack.io/v/MFlisar/FeedbackManager
-.svg)](https://jitpack.io/#MFlisar/FeedbackManager)
+### FeedbackManager [![Release](https://jitpack.io/v/MFlisar/FeedbackManager.svg)](https://jitpack.io/#MFlisar/FeedbackManager)
 
 ### What is it / What does it do?
 This is a very small library that allows you to send feedback from an app without internet connection via email, either directly or via an unintrusive notification
