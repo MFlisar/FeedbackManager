@@ -48,9 +48,9 @@ builder.startNotification(context, "Title of the email chooser dialog", appIcon,
 
 // Variation 2:
 // Directly start the email chooser
-builder.startEmailChooser(context, Title of the email chooser dialog");
+builder.startEmailChooser(context, "Title of the email chooser dialog");
 
 // Variation 3:
 // get the intent that can be started whenever desired
-Intent emailIntent = builder.buildIntent(context, Title of the email chooser dialog");
+Intent emailIntent = builder.buildIntent(context, "Title of the email chooser dialog");
 ```
