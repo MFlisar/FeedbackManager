@@ -22,6 +22,11 @@ android {
             targetSdkVersion 26
         }
     }
+
+    if (!project.hasProperty('versions.supportLib'))
+    {
+        project.ext.set("versions", ["supportLib" : "26.1.0"]);
+    }
 }
 
 dependencies {
