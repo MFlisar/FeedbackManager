@@ -25,5 +25,8 @@ android {
 }
 
 dependencies {
-    compile project(':CacheFileProvider')
+    implementation "com.android.support:support-core-ui:${versions.supportLib}"
+
+    compile 'com.github.MFlisar:CacheFileProvider:0.1'
+//    compile project(':CacheFileProvider')
 }

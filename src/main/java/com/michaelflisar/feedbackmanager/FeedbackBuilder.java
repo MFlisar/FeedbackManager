@@ -1,9 +1,12 @@
 package com.michaelflisar.feedbackmanager;
 
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 
 import com.michaelflisar.cachefileprovider.CachedFileProvider;
@@ -20,7 +23,11 @@ public class FeedbackBuilder {
     private boolean mTextIsHtml = false;
     private List<Object> mAttachments = null;
 
-    public FeedbackBuilder() {
+    FeedbackBuilder() {
+    }
+
+    public static FeedbackBuilder create() {
+        return new FeedbackBuilder();
     }
 
     public FeedbackBuilder addReceiver(String mail) {
@@ -103,8 +110,21 @@ public class FeedbackBuilder {
         return Intent.createChooser(intent, chooserTitle);
     }
 
-    public void startIntent(Context context, String chooserTitle) {
+    public void startEmailChooser(Context context, String chooserTitle) {
         Intent intent = buildIntent(context, chooserTitle);
         context.startActivity(intent);
+    }
+
+    public void startNotification(Context context, String chooserTitle, int notificationIcon, String notificationChannel, int notificationId) {
+        Intent intent = buildIntent(context, chooserTitle);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1111 /* unused */, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
+                .setSmallIcon(notificationIcon)
+                .setContentTitle("Rare error found")
+                .setContentText("Please report this error by clicking this notification, thanks")
+                .setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notificationId, builder.build());
     }
 }
