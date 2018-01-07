@@ -29,6 +29,15 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     compile "com.android.support:support-core-ui:${versions.supportLib}"
 
