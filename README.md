@@ -34,7 +34,7 @@ FeedbackBuilder builder = FeedbackBuilder.create()
 	.withSubject("Feedback for My App v1.0")
 	.withText("My email text...")
 	.addFile(file); // files will be copied to the apps cache and provided via a simple cache file provider
-...
+```
 
 2. Send the feedback mail
 
@@ -53,5 +53,4 @@ builder.startEmailChooser(context, Title of the email chooser dialog");
 // Variation 3:
 // get the intent that can be started whenever desired
 Intent emailIntent = builder.buildIntent(context, Title of the email chooser dialog");
-
-...
+```
