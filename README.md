@@ -23,8 +23,35 @@ dependencies {
 
 ### Usage - General
 
+1. Create a builder
+
 ```groovy
+File file = ...;
+FeedbackBuilder builder = FeedbackBuilder.create()
+	// required!
+	.addReceiver("admin@example.com")
+	// following things are optional
+	.withSubject("Feedback for My App v1.0")
+	.withText("My email text...")
+	.addFile(file); // files will be copied to the apps cache and provided via a simple cache file provider
 ...
 
-### Other things
+2. Send the feedback mail
 
+```groovy
+String notificationChannel = ...;
+int notificationId = ...;
+
+// Variation 1:
+// Show a notification, it can be clicked and then the user can select how he wants to send the feedback mail
+builder.startNotification(context, "Title of the email chooser dialog", appIcon, notificationChannel, notificationId);
+
+// Variation 2:
+// Directly start the email chooser
+builder.startEmailChooser(context, Title of the email chooser dialog");
+
+// Variation 3:
+// get the intent that can be started whenever desired
+Intent emailIntent = builder.buildIntent(context, Title of the email chooser dialog");
+
+...
