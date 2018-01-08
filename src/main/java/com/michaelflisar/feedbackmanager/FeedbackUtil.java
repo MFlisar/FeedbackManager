@@ -11,47 +11,39 @@ import java.util.UUID;
 
 public class FeedbackUtil {
 
-    static String copyFileToCache(Context context, Object file) {
-        if (file instanceof File) {
-            return copyFileToCache(context, (File) file);
-        } else if (file instanceof Uri) {
-            return copyFileToCache(context, (Uri) file);
-        } else {
-            throw new RuntimeException("Unknown file object!");
-        }
-    }
-
-    static String copyFileToCache(Context context, File file) {
+    static String copyFileToCache(Context context, FeedbackFile feedbackFile) {
         // 1) find out a free cache file name
-        String cacheFileName = createCacheFileName(file);
+        String cacheFileName = createCacheFileName(feedbackFile);
 
         // 2) copy input file to cache file
-        File cacheFile = CacheFileProviderUtil.copyFile(context, file, cacheFileName);
+        Uri cacheFile = CacheFileProviderUtil.copyFile(context, feedbackFile.attachment, cacheFileName);
 
         // 3) return cache file name
         return cacheFileName;
     }
 
-    static String copyFileToCache(Context context, Uri fileUri) {
-        // 1) find out a free cache file name
-        String cacheFileName = createCacheFileName(new File(fileUri.getPath()));
+    static String createCacheFileName(FeedbackFile feedbackFile) {
 
-        // 2) copy input file to cache file
-        Uri cacheFile = CacheFileProviderUtil.copyFile(context, fileUri, cacheFileName);
-
-        // 3) return cache file name
-        return cacheFileName;
-    }
-
-    static String createCacheFileName(File file) {
-        // find out a free cache file name - simply use filename + _ + UUID
-        String nameWithoutExtension = file.getName();
-        String extension = "";
-        int i = file.getName().lastIndexOf('.');
-        if (i > 0) {
-            extension = "." + file.getName().substring(i + 1);
-            nameWithoutExtension = file.getName().substring(0, i);
+        // Case 1: we want a unique cache file name => we generate it: filename + "_" + UUID
+        if (feedbackFile.generateUniqueName) {
+            File file = new File(feedbackFile.attachment.getPath());
+            String nameWithoutExtension = file.getName();
+            String extension = "";
+            int i = file.getName().lastIndexOf('.');
+            if (i > 0) {
+                extension = "." + file.getName().substring(i + 1);
+                nameWithoutExtension = file.getName().substring(0, i);
+            }
+            return nameWithoutExtension + "_" + UUID.randomUUID().toString() + extension;
         }
-        return nameWithoutExtension + "_" + UUID.randomUUID().toString() + extension;
+        // Case 2: we want to use a custom name
+        else if (feedbackFile.customCacheFileName != null) {
+            return feedbackFile.customCacheFileName;
+        }
+        // Case 3: we want to use the original name
+        else {
+            File file = new File(feedbackFile.attachment.getPath());
+            return file.getName();
+        }
     }
 }

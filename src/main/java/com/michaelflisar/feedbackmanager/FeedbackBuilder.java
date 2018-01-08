@@ -1,6 +1,5 @@
 package com.michaelflisar.feedbackmanager;
 
-
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -21,7 +20,7 @@ public class FeedbackBuilder {
     private String mSubject = null;
     private String mText = null;
     private boolean mTextIsHtml = false;
-    private List<Object> mAttachments = null;
+    private List<FeedbackFile> mAttachments = null;
 
     FeedbackBuilder() {
     }
@@ -59,15 +58,23 @@ public class FeedbackBuilder {
         if (mAttachments == null) {
             mAttachments = new ArrayList<>();
         }
-        mAttachments.add(Uri.fromFile(file));
+        mAttachments.add(new FeedbackFile(file));
         return this;
     }
 
-    public FeedbackBuilder addFile(Uri uri) {
+    public FeedbackBuilder addFile(Uri fileUri) {
         if (mAttachments == null) {
             mAttachments = new ArrayList<>();
         }
-        mAttachments.add(uri);
+        mAttachments.add(new FeedbackFile(fileUri));
+        return this;
+    }
+
+    public FeedbackBuilder addFile(FeedbackFile file) {
+        if (mAttachments == null) {
+            mAttachments = new ArrayList<>();
+        }
+        mAttachments.add(file);
         return this;
     }
 
@@ -98,8 +105,8 @@ public class FeedbackBuilder {
                 intent.putExtra(Intent.EXTRA_STREAM, CachedFileProvider.getCacheFileUri(context, cacheFileName));
             } else {
                 ArrayList<Uri> uris = new ArrayList<>();
-                for (Object attachment : mAttachments) {
-                    cacheFileName = FeedbackUtil.copyFileToCache(context, attachment);
+                for (int i = 0; i < mAttachments.size(); i++) {
+                    cacheFileName = FeedbackUtil.copyFileToCache(context, mAttachments.get(i));
                     uris.add(CachedFileProvider.getCacheFileUri(context, cacheFileName));
                 }
                 intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
@@ -127,4 +134,5 @@ public class FeedbackBuilder {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(notificationId, builder.build());
     }
+
 }
