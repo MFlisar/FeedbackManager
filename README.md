@@ -53,8 +53,8 @@ builder
 	.addFile(new FeedbackFile(file).withCustomCacheFileName("my_file_name.txt"))
 	.addFile(new FeedbackFile(fileUri).withCustomCacheFileName("my_second_file_name.txt"))
 	// 3) copy file to cache and generate a unique name (uses the oringal name and adds a "_" + UUID before the file extension) 
-	.addFile(new FeedbackFile(file).withGenerateUniqueName)
-	.addFile(new FeedbackFile(fileUri).withGenerateUniqueName)
+	.addFile(new FeedbackFile(file).withGenerateUniqueName())
+	.addFile(new FeedbackFile(fileUri).withGenerateUniqueName())
 ```
 
 3. Send the feedback mail
