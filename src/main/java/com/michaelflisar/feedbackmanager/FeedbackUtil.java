@@ -16,7 +16,7 @@ public class FeedbackUtil {
         String cacheFileName = createCacheFileName(feedbackFile);
 
         // 2) copy input file to cache file
-        Uri cacheFile = CacheFileProviderUtil.copyFile(context, feedbackFile.attachment, cacheFileName);
+        Uri cacheFile = CacheFileProviderUtil.copyFile(context, feedbackFile.attachment, cacheFileName, feedbackFile.useOriginalName());
 
         // 3) return cache file name
         return cacheFileName;

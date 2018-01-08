@@ -24,6 +24,10 @@ public class FeedbackFile {
         customCacheFileName = null;
     }
 
+    public boolean useOriginalName() {
+        return !generateUniqueName && customCacheFileName == null;
+    }
+
     public File getFile() {
         return new File(attachment.getPath());
     }
