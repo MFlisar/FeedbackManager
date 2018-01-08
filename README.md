@@ -1,4 +1,4 @@
-### FeedbackManager [![Release](https://jitpack.io/v/MFlisar/FeedbackManager.svg)](https://jitpack.io/#MFlisar/FeedbackManager) <a href="http://www.methodscount.com/?lib=com.github.MFlisar%3AFeedbackManager%3A1.0"><img src="https://img.shields.io/badge/Methods and size-core: 63 | deps: 7572 | 7 KB-e91e63.svg"/></a>
+### FeedbackManager [![Release](https://jitpack.io/v/MFlisar/FeedbackManager.svg)](https://jitpack.io/#MFlisar/FeedbackManager) <a href="http://www.methodscount.com/?lib=com.github.MFlisar%3AFeedbackManager%3A1.1"><img src="https://img.shields.io/badge/Methods and size-core: 63 | deps: 7572 | 7 KB-e91e63.svg"/></a>
 
 ### What is it / What does it do?
 This is a very small library that allows you to send feedback from an app without internet connection via email, either directly or via an unintrusive notification. It only has 63 methods and one dependency (com.android.support:support-core-ui, necessary for the notification)
