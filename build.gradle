@@ -33,6 +33,7 @@ allprojects {
     repositories {
         jcenter()
         maven { url 'https://jitpack.io' }
+		maven { url "https://maven.google.com" }
     }
 }
 
@@ -40,5 +41,5 @@ dependencies {
     compile "com.android.support:support-core-ui:${versions.supportLib}"
 
     compile 'com.github.MFlisar:CacheFileProvider:0.1'
-//    compile project(':CacheFileProvider')
+    // compile project(':CacheFileProvider')
 }

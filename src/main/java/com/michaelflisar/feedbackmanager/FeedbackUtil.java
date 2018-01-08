@@ -45,13 +45,13 @@ public class FeedbackUtil {
 
     static String createCacheFileName(File file) {
         // find out a free cache file name - simply use filename + _ + UUID
-        String cacheFileName = file.getName() + "_" + UUID.randomUUID().toString();
+        String nameWithoutExtension = file.getName();
         String extension = "";
-        int i = file.getAbsolutePath().lastIndexOf('.');
+        int i = file.getName().lastIndexOf('.');
         if (i > 0) {
-            extension = file.getAbsolutePath().substring(i + 1);
-            cacheFileName += "." + extension;
+            extension = "." + file.getName().substring(i + 1);
+            nameWithoutExtension = file.getName().substring(0, i);
         }
-        return cacheFileName;
+        return nameWithoutExtension + "_" + UUID.randomUUID().toString() + extension;
     }
 }

@@ -115,14 +115,14 @@ public class FeedbackBuilder {
         context.startActivity(intent);
     }
 
-    public void startNotification(Context context, String chooserTitle, int notificationIcon, String notificationChannel, int notificationId) {
+    public void startNotification(Context context, String chooserTitle, String notificationTitle, String notificationText, int notificationIcon, String notificationChannel, int notificationId) {
         Intent intent = buildIntent(context, chooserTitle);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 1111 /* unused */, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
                 .setSmallIcon(notificationIcon)
-                .setContentTitle("Rare error found")
-                .setContentText("Please report this error by clicking this notification, thanks")
+                .setContentTitle(notificationTitle)
+                .setContentText(notificationText)
                 .setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(notificationId, builder.build());
