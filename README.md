@@ -17,7 +17,7 @@ repositories {
 
 ```groovy
 dependencies {
-	compile 'com.github.MFlisar:FeedbackManager:1.1'
+	compile 'com.github.MFlisar:FeedbackManager:1.3'
 }
 ```
 
