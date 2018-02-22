@@ -15,17 +15,17 @@ android {
     }
     else
     {
-        compileSdkVersion 26
-        buildToolsVersion "26.0.2"
+        compileSdkVersion 27
+        buildToolsVersion "27.0.3"
         defaultConfig {
             minSdkVersion 14
-            targetSdkVersion 26
+            targetSdkVersion 27
         }
     }
 
     if (!project.hasProperty('versions.supportLib'))
     {
-        project.ext.set("versions", ["supportLib" : "26.1.0"]);
+        project.ext.set("versions", ["supportLib" : "27.0.2"]);
     }
 }
 
@@ -38,8 +38,8 @@ allprojects {
 }
 
 dependencies {
-    compile "com.android.support:support-core-ui:${versions.supportLib}"
+    implementation "com.android.support:support-core-ui:${versions.supportLib}"
 
-    compile 'com.github.MFlisar:CacheFileProvider:0.1'
-    //compile project(':CacheFileProvider')
+    compile 'com.github.MFlisar:CacheFileProvider:0.2'
+    //implementation project(':CacheFileProvider')
 }
