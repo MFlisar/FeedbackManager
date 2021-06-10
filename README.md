@@ -25,7 +25,7 @@ dependencies {
 
 1. Create a feedback
 
-```
+```kotlin
 val files: List<File> = ...
 
 val feedback = Feedback(
@@ -39,7 +39,7 @@ val feedback = Feedback(
 
 2. Send the feedback mail
 
-```
+```kotlin
 val notificationChannel: String = ...;
 val notificationId: Int = ...;
 val notificationIcon: Int = ...;
