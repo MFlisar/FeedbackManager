@@ -7,7 +7,7 @@ This is a very small library that allows you to send feedback from an app withou
 
 1. add jitpack to your project's `build.gradle`:
 
-```groovy
+```
 repositories {
 	maven { url "https://jitpack.io" }
 }
@@ -15,7 +15,7 @@ repositories {
 
 2. add the compile statement to your module's `build.gradle`:
 
-```groovy
+```
 dependencies {
 	compile 'com.github.MFlisar:FeedbackManager:1.3'
 }
@@ -25,7 +25,7 @@ dependencies {
 
 1. Create a feedback
 
-```groovy
+```
 val files: List<File> = ...
 
 val feedback = Feedback(
@@ -39,10 +39,10 @@ val feedback = Feedback(
 
 2. Send the feedback mail
 
-```groovy
-String notificationChannel = ...;
-int notificationId = ...;
-int notificationIcon = ...;
+```
+val notificationChannel: String = ...;
+val notificationId: Int = ...;
+val notificationIcon: Int = ...;
 
 // Variation 1:
 // Show a notification, it can be clicked and then the user can select how he wants to send the feedback mail
