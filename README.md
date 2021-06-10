@@ -23,41 +23,21 @@ dependencies {
 
 ### Usage - General
 
-1. Create a builder
+1. Create a feedback
 
 ```groovy
-File file = ...;
-FeedbackBuilder builder = FeedbackBuilder.create()
-	// required!
-	.addReceiver("admin@example.com")
-	// following things are optional
-	.withSubject("Feedback for My App v1.0")
-	.withText("My email text...")
-	.addFile(file); // files will be copied to the apps cache and provided via a simple cache file provider
+val files: List<File> = ...
+
+val feedback = Feedback(
+	listOf("admin@example.com"),
+	"Feedback for My App v1.0"),
+	// optional from here on
+	text = "My email text..."
+	attachments = files.map { FeedbackFile.DefaultName(it) } // files will be copied to the apps cache and provided via a simple cache file provider
+)
 ```
 
-2. Adding files - customise behaviour
-
-Files are exposed via a `ContentProvider` that copies the file to the app's cache directory. You can add files in those ways:
-
-```groovy
-File file = ...;
-Uri fileUri = ...;
-builder
-        // 1) copy file to cache and use the original file name
-	.addFile(file)
-	.addFile(fileUri)
-	.addFile(new FeedbackFile(file))
-	.addFile(new FeedbackFile(fileUri))
-	// 2) copy file to cache and use custom file name
-	.addFile(new FeedbackFile(file).withCustomCacheFileName("my_file_name.txt"))
-	.addFile(new FeedbackFile(fileUri).withCustomCacheFileName("my_second_file_name.txt"))
-	// 3) copy file to cache and generate a unique name (uses the oringal name and adds a "_" + UUID before the file extension) 
-	.addFile(new FeedbackFile(file).withGenerateUniqueName())
-	.addFile(new FeedbackFile(fileUri).withGenerateUniqueName())
-```
-
-3. Send the feedback mail
+2. Send the feedback mail
 
 ```groovy
 String notificationChannel = ...;
@@ -66,19 +46,22 @@ int notificationIcon = ...;
 
 // Variation 1:
 // Show a notification, it can be clicked and then the user can select how he wants to send the feedback mail
-builder.startNotification(context, 
-	"Title of the email chooser dialog", 
-	"Notification Title", 
-	"Notification Text", 
-	notificationIcon, 
-	notificationChannel, 
-	notificationId);
+feedback
+	.startNotification(
+		context,
+		"Title of the email chooser dialog",
+		"Notification Title", 
+		"Notification Text",
+		notificationIcon, 
+		notificationChannel, 
+		notificationId
+	)
 
 // Variation 2:
 // Directly start the email chooser
-builder.startEmailChooser(context, "Title of the email chooser dialog");
+feedback.startEmailChooser(context, "Title of the email chooser dialog")
 
 // Variation 3:
 // get the intent that can be started whenever desired
-Intent emailIntent = builder.buildIntent(context, "Title of the email chooser dialog");
+val emailIntent: Intent = feedback.buildIntent(context, "Title of the email chooser dialog")
 ```
