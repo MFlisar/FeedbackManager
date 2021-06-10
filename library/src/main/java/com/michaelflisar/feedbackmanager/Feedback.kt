@@ -13,7 +13,7 @@ import com.michaelflisar.feedbackmanager.internal.FeedbackUtil.copyFileToCache
 class Feedback(
     private val receivers: List<String>,
     private val subject: String,
-    private val text: String?,
+    private val text: String? = null,
     private val textIsHtml: Boolean = false,
     private val attachments: List<FeedbackFile> = emptyList()
 ) {
