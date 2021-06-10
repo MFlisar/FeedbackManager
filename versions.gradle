@@ -1,0 +1,22 @@
+ext {
+
+    setup = [
+            compileSdk       : 30,
+            enableDataBinding: false,
+            enableViewBinding: true,
+            minSdk           : 16,
+            targetSdk        : 30]
+
+    versions = [
+            kotlinVersion    : "1.5.10",
+            gradlePlugin     : "4.0.2",
+            mavenVersion     : "2.0",
+
+            core             : "1.5.0",
+
+            cahceFileProvider: "0.2"
+    ]
+
+    debugSetup = [useMultiDex: false]
+    releaseSetup = [useMultiDex: false]
+}

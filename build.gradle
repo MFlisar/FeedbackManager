@@ -1,44 +1,29 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: './versions.gradle'
 
-group = 'com.github.MFlisar'
+buildscript {
 
-android {
-    if (project.hasProperty('setup.compileSdk'))
-    {
-        compileSdkVersion setup.compileSdk
-        buildToolsVersion setup.buildTools
-        defaultConfig {
-            minSdkVersion setup.minSdk
-            targetSdkVersion setup.targetSdk
-        }
+	apply from: './versions.gradle'
+
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        google()
     }
-    else
-    {
-        compileSdkVersion 27
-        buildToolsVersion "27.0.3"
-        defaultConfig {
-            minSdkVersion 14
-            targetSdkVersion 27
-        }
-    }
-
-    if (!project.hasProperty('versions.supportLib'))
-    {
-        project.ext.set("versions", ["supportLib" : "27.0.2"]);
+    dependencies {
+        classpath 'com.android.tools.build:gradle:' + versions.gradlePlugin
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:' + versions.kotlinVersion
     }
 }
 
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://jitpack.io' }
-		maven { url "https://maven.google.com" }
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
     }
 }
 
-dependencies {
-    compile "com.android.support:support-core-ui:${versions.supportLib}"
-    compile 'com.github.MFlisar:CacheFileProvider:0.2'
-    //implementation project(':CacheFileProvider')
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
