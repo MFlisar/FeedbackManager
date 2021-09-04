@@ -47,7 +47,9 @@ class Feedback(
         }
 
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        return Intent.createChooser(intent, chooserTitle)
+        return Intent.createChooser(intent, chooserTitle).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
     }
 
     fun startEmailChooser(context: Context, chooserTitle: String) {
