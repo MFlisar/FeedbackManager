@@ -42,5 +42,5 @@ dependencies {
     // Others
     // ------------------------
 
-    implementation "com.github.MFlisar:CacheFileProvider:${versions.cahceFileProvider}"
+    implementation "com.github.MFlisar:CacheFileProvider:${versions.cacheFileProvider}"
 }

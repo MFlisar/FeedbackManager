@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.text.Html
 import androidx.core.app.NotificationCompat
 import com.michaelflisar.cachefileprovider.CachedFileProvider
@@ -67,12 +68,16 @@ class Feedback(
         notificationId: Int
     ) {
         val intent = buildIntent(context, chooserTitle)
+        val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        } else PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent = PendingIntent.getActivity(
             context,
             1111 /* unused */,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            flags
         )
+
         val builder = NotificationCompat.Builder(
             context,
             notificationChannel
