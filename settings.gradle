@@ -1,2 +1,0 @@
-include ':feedbackmanager-library'
-project(':feedbackmanager-library').projectDir = new File(settingsDir, 'library')
