@@ -1,9 +1,0 @@
-[versions]
-
-# mflisar
-cachefileprovider =     "0.3.1"
-
-[libraries]
-
-# mflisar
-cachefileprovider =         { module = "com.github.MFlisar:CacheFileProvider", 						version.ref = "cachefileprovider" }
