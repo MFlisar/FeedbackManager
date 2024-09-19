@@ -26,4 +26,3 @@ dependencyResolutionManagement {
 // --------------
 
 include(":library")
-project(":library").projectDir = file("library")
