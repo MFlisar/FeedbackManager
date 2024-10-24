@@ -17,8 +17,8 @@ This is a very small library that allows you to **send feedback** from an app **
 ## :link: Dependencies
 
 | Dependency                                                        | Version |
-|-------------------------------------------------------------------|---------|
-| [CacheFileProvider](https://github.com/MFlisar/CacheFileProvider) | 0.4.0   |
+|:------------------------------------------------------------------|:--------|
+| [CacheFileProvider](https://github.com/MFlisar/CacheFileProvider) | `0.4.0` |
 
 ## :elephant: Gradle
 
