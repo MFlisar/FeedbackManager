@@ -14,11 +14,6 @@ This is a very small library that allows you to **send feedback** from an app **
 * no internet permission needed - everything is done via a shared Intent which then can by handled by an installed email app
 * minimal size - only a **few functions** inside **2 classes**
 
-
-## :camera: Screenshots
-
---
-
 ## :link: Dependencies
 
 | Dependency                                                        | Version |
