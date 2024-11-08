@@ -1,0 +1,7 @@
+[versions]
+
+cachefileprovider =             "0.4.0"
+
+[libraries]
+
+cachefileprovider =                 { module = "io.github.mflisar.cachefileprovider:library", 	version.ref = "cachefileprovider" }

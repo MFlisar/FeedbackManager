@@ -1,0 +1,69 @@
+# -------
+# Library
+# -------
+
+library:
+  name: FeedbackManager
+  api: 21
+  github: MFlisar/FeedbackManager
+  maven: io.github.mflisar.feedbackmanager
+  maven-main-library: library
+  multiplatform: false
+  screenshots: []
+  branch: master
+  demo: false
+
+# ------------
+# Dependencies
+# ------------
+
+# nicht notwendig, da library keine platforms unterstützt noch dependencies hat noch module
+
+#dependencies:
+#  compose:
+#    cmp: 1.7.0
+#    compose: 1.7.1
+#    material3: 1.3.0
+#    experimantal: true
+
+# -------------
+# Module
+# -------------
+
+modules:
+  #- #name: "" # single module hat keinen Namen!
+    # group: "" # single module hat keine Gruppe!
+    # description: "" # single module hat keine Beschreibung!
+    # optional: false # single module ist nie optional
+    #platforms: # optionales Array - wird nur bei multiplatform genutzt!
+    #  android: true
+    #  ios: true
+    #  jvm: true
+    #  info: 
+    dependencies: # optionales Array
+      - name: FeedbackManager
+        link: https://github.com/MFlisar/CacheFileProvider
+        version: 0.4.0
+
+#  - name: "module2" # single module hat keinen Namen!
+#    group: "b" # single module hat keine Gruppe!
+#    # description: "" # single module hat keine Beschreibung!
+#    # optional: false # single module ist nie optional
+#    platforms: # optionales Array
+#      android: true
+#      ios: true
+#      jvm: true
+#      info:
+#    dependencies: # optionales Array
+#      - name: FeedbackManager
+#        link: https://github.com/MFlisar/FeedbackManager
+#        version: 2.0.1
+
+# optional: nur bei mehreren Modulen benötigt!
+#groups:
+#  - name: a
+#    label: Gruppe A
+#    gradle-comment: "Gruppe A..."
+#  - name: b
+#    label: Gruppe B
+#    gradle-comment: "Gruppe B..."

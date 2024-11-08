@@ -62,16 +62,10 @@ android {
 dependencies {
 
     // ------------------------
-    // Kotlin
+    // KotlinX / AndroidX / Google
     // ------------------------
 
-    implementation(libs.kotlin)
-
-    // ------------------------
-    // AndroidX / Google / Goolge
-    // ------------------------
-
-    implementation(libs.androidx.core)
+    implementation(androidx.core)
 
     // ------------------------
     // Others
@@ -79,7 +73,7 @@ dependencies {
 
     val useLiveDependencies = providers.gradleProperty("useLiveDependencies").get().toBoolean()
     if (useLiveDependencies) {
-        implementation(libs.cachefileprovider)
+        implementation(deps.cachefileprovider)
     } else {
         implementation(project(":CacheFileProvider"))
     }
