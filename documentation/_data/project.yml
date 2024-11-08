@@ -31,7 +31,7 @@ library:
 # -------------
 
 modules:
-  #- #name: "" # single module hat keinen Namen!
+  - #name: "" # single module hat keinen Namen!
     # group: "" # single module hat keine Gruppe!
     # description: "" # single module hat keine Beschreibung!
     # optional: false # single module ist nie optional
@@ -42,7 +42,7 @@ modules:
     #  info: 
     dependencies: # optionales Array
       - name: FeedbackManager
-        link: https://github.com/MFlisar/CacheFileProvider
+        link: https://mflisar.github.io/CacheFileProvider/
         version: 0.4.0
 
 #  - name: "module2" # single module hat keinen Namen!

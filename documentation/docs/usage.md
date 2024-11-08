@@ -2,7 +2,7 @@
 icon: material/keyboard
 ---
 
-#### Basic Usage
+#### Start an email chooser
 
 ```kotlin
 val feedback = Feedback(
