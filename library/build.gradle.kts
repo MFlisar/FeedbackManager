@@ -75,7 +75,7 @@ dependencies {
     if (useLiveDependencies) {
         implementation(deps.cachefileprovider)
     } else {
-        implementation(project(":CacheFileProvider"))
+        implementation(project(":cachefileprovider"))
     }
 }
 
