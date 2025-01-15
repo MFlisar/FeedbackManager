@@ -42,7 +42,7 @@ modules:
     #  jvm: true
     #  info: 
     dependencies:         # optionales Array
-      - name: FeedbackManager
+      - name: CacheFileProvider
         link: https://mflisar.github.io/CacheFileProvider/
         version: 0.4.0
 
