@@ -1,7 +1,14 @@
 [versions]
 
-cachefileprovider =             "0.4.0"
+# mflisar
+kmp-library =               "1.7.4"
+cachefileprovider =         "0.4.0"
+
+[plugins]
+
+kmplibrary-buildplugin =            { id = "io.github.mflisar.kmp-library.plugins-build-gradle",            version.ref = "kmp-library" }
 
 [libraries]
 
-cachefileprovider =                 { module = "io.github.mflisar.cachefileprovider:library", 	version.ref = "cachefileprovider" }
+kmplibrary-docs =                   { module = "io.github.mflisar.kmp-library:docs",                        version.ref = "kmp-library" }
+cachefileprovider =                 { module = "io.github.mflisar.cachefileprovider:library", 	            version.ref = "cachefileprovider" }
